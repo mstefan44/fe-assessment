@@ -4,6 +4,7 @@ import { interval, map } from 'rxjs';
 
 @Component({
   selector: 'app-countdown',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './countdown.component.html',
   styleUrl: './countdown.component.scss',

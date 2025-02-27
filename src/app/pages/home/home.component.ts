@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Category } from '../../types/types';
 import { CommonModule } from '@angular/common';
 import { LoadingSkeletonComponent } from '../../components/loading-skeleton/loading-skeleton.component';
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   error: string | null = null;
   loading: boolean = true;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.dataService.getCategories().subscribe({
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
         console.error('error', error);
         this.error = 'An error occurred while fetching data';
         this.loading = false;
+        this.router.navigate(['/404']);
       },
       complete: () => {
         this.loading = false;

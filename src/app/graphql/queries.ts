@@ -39,20 +39,21 @@ export const GET_PRODUCTS = gql`
 `;
 
 export const GET_RELATED_PRODUCTS = gql`
-  query ($slug: String!, $num: Int!) {
-    getProductList(where: { category: { slug: { eq: $slug } } }, size: $num) {
+  query ($categorySlug: String!, $currentSlug: String!) {
+    getProductList(
+      where: {
+        category: { slug: { eq: $categorySlug } }
+        NOT: { slug: { eq: $currentSlug } }
+      }
+    ) {
       items {
         _id
-        category {
-          slug
-          title
-        }
-        image {
-          path
-        }
         name
         price
         slug
+        image {
+          path
+        }
       }
     }
   }

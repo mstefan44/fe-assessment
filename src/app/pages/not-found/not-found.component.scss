@@ -1,4 +1,6 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .not-found {
   text-align: center;
@@ -8,7 +10,7 @@
   align-items: center;
   justify-content: center;
   h1 {
-    @include font-h1;
+    @include t.font-h1;
     margin-bottom: 1em;
   }
 
@@ -17,7 +19,7 @@
   }
 
   .go-home {
-    @include button;
+    @include m.button;
     margin-inline: auto;
   }
 }

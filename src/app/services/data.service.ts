@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Category } from '../types/types';
+import { Category, Product } from '../types/types';
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
+  GET_RELATED_PRODUCTS,
   GET_SINGLE_PRODUCT,
 } from '../graphql/queries';
 
@@ -23,7 +24,7 @@ export class DataService {
 
   getProducts(slug: string) {
     return this.apollo.query<{
-      getProductList: { items: any[] };
+      getProductList: { items: Product[] };
     }>({
       query: GET_PRODUCTS,
       variables: { slug },
@@ -32,10 +33,19 @@ export class DataService {
 
   getSingleProducts(slug: string) {
     return this.apollo.query<{
-      getProductList: { items: any[] };
+      getProductList: { items: Product[] };
     }>({
       query: GET_SINGLE_PRODUCT,
       variables: { slug },
+    });
+  }
+
+  getRelatedProducts(categorySlug: string, currentSlug: string) {
+    return this.apollo.query<{
+      getProductList: { items: Product[] };
+    }>({
+      query: GET_RELATED_PRODUCTS,
+      variables: { categorySlug, currentSlug },
     });
   }
 }

@@ -1,26 +1,43 @@
-<ul class="related-product-list" *ngIf="relatedProducts">
-  @for (product of relatedProducts; track product._id) {
-  <li>
-    <a
-      [routerLink]="['/product', product.slug]"
-      [queryParams]="{ category: categorySlug }"
-    >
-      <figure>
-        <img
-          class="related-image"
-          [src]="'https://images.takeshape.io/' + product.image.path"
-          [alt]="product.name"
-        />
-      </figure>
-      <div class="product-info">
-        <p>
-          {{ product.name }}<br />
-          <span class="price">{{
-            product.price | currency : "EUR" : "symbol"
-          }}</span>
-        </p>
-      </div>
-    </a>
-  </li>
-  }
-</ul>
+<div class="related-products">
+  <h2>Related Products</h2>
+  @if(loadingRelatedProducts) {
+  <div class="skeleton-related-products">
+    <ul class="related-product-list skeleton-list">
+      <app-loading-skeleton></app-loading-skeleton>
+      <app-loading-skeleton></app-loading-skeleton>
+      <app-loading-skeleton></app-loading-skeleton>
+    </ul>
+  </div>
+  } @else if (errorRelatedProducts) {
+  <p class="error">{{ errorRelatedProducts }}</p>
+  } @else if (relatedProducts) { @if (relatedProducts.length === 0) {
+  <p class="no-products">No products found in this category.</p>
+  } @else {
+  <ul class="related-product-list" *ngIf="relatedProducts">
+    @for (product of relatedProducts; track product._id) {
+    <li>
+      <a
+        [routerLink]="['/product', product.slug]"
+        [queryParams]="{ category: categorySlug }"
+      >
+        <figure>
+          <img
+            class="related-image"
+            [src]="'https://images.takeshape.io/' + product.image.path"
+            [alt]="product.name"
+          />
+        </figure>
+        <div class="product-info">
+          <p>
+            {{ product.name }}<br />
+            <span class="price">{{
+              product.price | currency : "EUR" : "symbol"
+            }}</span>
+          </p>
+        </div>
+      </a>
+    </li>
+    }
+  </ul>
+  } }
+</div>

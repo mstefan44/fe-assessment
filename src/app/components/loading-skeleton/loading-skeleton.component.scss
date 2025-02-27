@@ -1,18 +1,20 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .skeleton-product {
   .skeleton-image {
-    @include skeleton(100%, 100%);
+    @include m.skeleton(100%, 100%);
     aspect-ratio: 1/1;
     margin-bottom: 1rem;
   }
   .skeleton-title {
-    @include skeleton(30px, 90%);
+    @include m.skeleton(30px, 90%);
     margin-bottom: 1rem;
   }
 
   .skeleton-price {
-    @include skeleton(15px, 30%);
+    @include m.skeleton(15px, 30%);
     margin-bottom: 1rem;
   }
 }

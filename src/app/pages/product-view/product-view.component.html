@@ -37,26 +37,9 @@
       </div>
       }
     </div>
-    <div class="related-products">
-      <h2>Related Products</h2>
-      @if(loadingRelatedProducts) {
-      <div class="skeleton-related-products">
-        <ul class="related-product-list skeleton-list">
-          <app-loading-skeleton></app-loading-skeleton>
-          <app-loading-skeleton></app-loading-skeleton>
-          <app-loading-skeleton></app-loading-skeleton>
-        </ul>
-      </div>
-      } @else if (errorRelatedProducts) {
-      <p class="error">{{ errorRelatedProducts }}</p>
-      } @else if (relatedProducts) { @if (relatedProducts.length === 0) {
-      <p class="no-products">No products found in this category.</p>
-      } @else {
-      <app-related-products
-        [relatedProducts]="relatedProducts"
-        [categorySlug]="categorySlug"
-      ></app-related-products>
-      } }
-    </div>
+    <app-related-products
+      [categorySlug]="categorySlug!"
+      [currentSlug]="currentSlug!"
+    ></app-related-products>
   </div>
 </div>

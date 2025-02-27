@@ -39,6 +39,7 @@ export class CategoryViewComponent implements OnInit {
           console.error('error', error);
           this.error = 'An error occurred while fetching data';
           this.loading = false;
+          this.router.navigate(['/404']);
         },
         complete: () => {
           this.loading = false;

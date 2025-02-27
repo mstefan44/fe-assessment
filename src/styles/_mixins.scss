@@ -1,3 +1,5 @@
+@use "variables" as v;
+
 @mixin wrapper {
   width: 90%;
   max-width: 1520px;
@@ -15,10 +17,9 @@
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
-  // box-shadow: 0 0 20px #eee;
   border: none;
   border-radius: 10px;
-  font-family: $orbitron;
+  font-family: v.$orbitron;
   cursor: pointer;
   background-image: linear-gradient(
     to right,

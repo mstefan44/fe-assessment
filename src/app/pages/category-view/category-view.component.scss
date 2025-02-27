@@ -1,4 +1,6 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .category-view {
   overflow: hidden;
@@ -10,7 +12,7 @@
     margin-bottom: 3rem;
     gap: 1rem;
     button {
-      @include button;
+      @include m.button;
     }
     @media (max-width: 680px) {
       flex-direction: column-reverse;
@@ -19,7 +21,7 @@
   h1 {
     text-align: center;
     text-transform: uppercase;
-    color: $primary;
+    color: v.$primary;
   }
   .product-list {
     list-style: none;
@@ -28,7 +30,6 @@
 
     li {
       position: relative;
-      // margin-bottom: 0;
       figure {
         aspect-ratio: 15/16;
         overflow: hidden;
@@ -44,7 +45,7 @@
         }
       }
       .product-info {
-        @include font-text-medium;
+        @include t.font-text-medium;
         span {
           font-size: 16px;
           font-weight: 700;

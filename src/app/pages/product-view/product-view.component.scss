@@ -1,15 +1,17 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .product-view {
   padding-block: 3rem;
   button {
-    @include button;
+    @include m.button;
   }
   h1 {
     font-size: clamp(2rem, #{"-0.5rem + 8vw"}, 4rem);
   }
   .price {
-    @include font-text-large;
+    @include t.font-text-large;
     font-weight: 700;
   }
   .product-single {
@@ -47,25 +49,25 @@
       margin-top: auto;
     }
     .skeleton-image {
-      @include skeleton(400px, 400px);
+      @include m.skeleton(400px, 400px);
       aspect-ratio: 15/16;
     }
     .skeleton-title {
-      @include skeleton(40px, 60%);
+      @include m.skeleton(40px, 60%);
       margin-bottom: 1rem;
     }
     .skeleton-description {
-      @include skeleton(20px, 80%);
+      @include m.skeleton(20px, 80%);
       margin-bottom: 1rem;
     }
 
     .skeleton-price {
-      @include skeleton(25px, 15%);
+      @include m.skeleton(25px, 15%);
       margin-bottom: 1rem;
     }
 
     .skeleton-countdown {
-      @include skeleton(40px, 25%);
+      @include m.skeleton(40px, 25%);
     }
 
     @media (max-width: 767px) {
@@ -73,23 +75,6 @@
     }
   }
 
-  .related-products {
-    h2 {
-      @include font-text-large;
-      font-family: $orbitron;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-  }
-
-  @media (min-width: 581px) {
-    .related-product-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem 1rem;
-    }
-  }
   @media (min-width: 768px) {
     .col-left {
       width: 50%;
@@ -104,18 +89,6 @@
     }
     .col-right {
       width: 60%;
-    }
-    .related-product-list {
-      grid-template-columns: repeat(3, 1fr);
-      figure,
-      img {
-        aspect-ratio: 14/15;
-      }
-    }
-  }
-  @media (min-width: 1440px) {
-    .related-product-list {
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

@@ -1,4 +1,6 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .countdown {
   .countdown-text {
@@ -7,11 +9,11 @@
   .timer {
     display: flex;
     gap: 0.5rem;
-    font-family: $orbitron;
+    font-family: v.$orbitron;
   }
 
   .timer-unit {
-    background: rgba($primary, 0.5);
+    background: rgba(v.$primary, 0.5);
     padding: 8px;
     border-radius: 3px;
     min-width: 80px;
@@ -19,10 +21,10 @@
     color: #fff;
 
     .digit {
-      @include font-text-medium;
+      @include t.font-text-medium;
       font-weight: 700;
       display: block;
-      background-color: $primary;
+      background-color: v.$primary;
       border-radius: 3px;
       padding: 12px;
       font-variant-numeric: tabular-nums;

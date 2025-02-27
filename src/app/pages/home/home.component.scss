@@ -1,4 +1,6 @@
-@import "../../../styles/includes";
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as v;
+@use "../../../styles/typography" as t;
 
 .homepage {
   overflow: hidden;
@@ -33,8 +35,8 @@
         }
       }
       .category-info {
-        font-family: $orbitron;
-        @include font-text-large;
+        font-family: v.$orbitron;
+        @include t.font-text-large;
         span {
           font-size: 16px;
         }
@@ -50,11 +52,6 @@
     li {
       height: fit-content;
     }
-
-    // .skeleton-category-item {
-    //   @include skeleton(100%, 100%);
-    //   aspect-ratio: 4/5;
-    // }
   }
   @media (min-width: 581px) {
     .category-list {
