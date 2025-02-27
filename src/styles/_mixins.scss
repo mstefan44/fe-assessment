@@ -36,12 +36,7 @@
 }
 
 @mixin skeleton($height: 20px, $width: 100%) {
-  background: linear-gradient(
-    90deg,
-    #dadada 25%,
-    lighten(#dadada, 5%) 50%,
-    #dadada 75%
-  );
+  background: linear-gradient(90deg, #dadada 25%, #ebebeb 50%, #dadada 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
