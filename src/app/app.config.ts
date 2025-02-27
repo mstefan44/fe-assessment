@@ -13,9 +13,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideApollo(() => {
       const httpLink = new HttpLink({
-        uri: environment.takeshapeGraphqlEndpoint,
+        uri: environment.apiEndpoint,
         headers: {
-          Authorization: `Bearer ${environment.takeshapeApiKey}`,
+          Authorization: `Bearer ${environment.apiKey}`,
         },
       });
       return {
