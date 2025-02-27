@@ -44,9 +44,11 @@
         }
       }
       .product-info {
-        font-family: $orbitron;
         @include font-text-medium;
-        color: $primary;
+        span {
+          font-size: 16px;
+          font-weight: 700;
+        }
       }
     }
   }
