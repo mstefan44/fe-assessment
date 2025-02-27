@@ -1,0 +1,77 @@
+@import "../../../styles/includes";
+
+.homepage {
+  overflow: hidden;
+  padding-block: 3rem;
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1.5em;
+  }
+  .category-list {
+    list-style: none;
+    padding: 0;
+    gap: 2rem 1rem;
+    li {
+      position: relative;
+      a {
+        display: block;
+        text-decoration: none;
+        figure {
+          overflow: hidden;
+          aspect-ratio: 1/1;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        img {
+          transition: transform 0.3s;
+          aspect-ratio: 1/1;
+        }
+        &:hover {
+          img {
+            transform: scale(1.02);
+          }
+        }
+      }
+      .category-info {
+        font-family: $orbitron;
+        @include font-text-large;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .skeleton-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    li {
+      height: fit-content;
+    }
+
+    // .skeleton-category-item {
+    //   @include skeleton(100%, 100%);
+    //   aspect-ratio: 4/5;
+    // }
+  }
+  @media (min-width: 581px) {
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      li {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @media (min-width: 1181px) {
+    .category-list {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      li a figure,
+      li a img {
+        aspect-ratio: 4/5;
+      }
+    }
+  }
+}

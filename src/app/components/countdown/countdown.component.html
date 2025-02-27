@@ -1,0 +1,19 @@
+<div class="countdown">
+  <p class="countdown-text">Order by midnight for tomorrow's delivery:</p>
+  <div class="timer">
+    <div class="timer-unit">
+      <span class="digit">{{ (countdown$ | async)?.hours }}</span>
+      <span class="label">hours</span>
+    </div>
+    <div class="timer-unit">
+      <span class="digit">{{ (countdown$ | async)?.minutes }}</span>
+      <span class="label">minutes</span>
+    </div>
+    <div class="timer-unit">
+      <span class="digit">
+        {{ (countdown$ | async)?.seconds }}
+      </span>
+      <span class="label">seconds</span>
+    </div>
+  </div>
+</div>

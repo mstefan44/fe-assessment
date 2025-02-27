@@ -1,0 +1,46 @@
+<div class="category-view">
+  <div class="inside">
+    <div class="header-wrap">
+      <h1>Products</h1>
+      <button class="go-back" (click)="goBack()">Back to home</button>
+    </div>
+    @if (loading) {
+    <div class="skeleton-category">
+      <ul class="product-list skeleton-list">
+        <app-loading-skeleton></app-loading-skeleton>
+        <app-loading-skeleton></app-loading-skeleton>
+        <app-loading-skeleton></app-loading-skeleton>
+        <app-loading-skeleton></app-loading-skeleton>
+      </ul>
+    </div>
+    } @else if (error) {
+    <p class="error">{{ error }}</p>
+    } @else if (products) {
+    <ul class="product-list">
+      @for (product of products; track product._id) {
+      <li class="product-item">
+        <a
+          [routerLink]="['/product', product.slug]"
+          [queryParams]="{ category: currentSlug }"
+        >
+          <figure>
+            <img
+              [src]="'https://images.takeshape.io/' + product.image.path"
+              [style.view-transition-name]="'product-image-' + product.slug"
+              alt="Product"
+            />
+          </figure>
+
+          <p class="product-info">
+            {{ product.name }}<br />
+            <small>{{
+              product.price.toFixed(2) | currency : "EUR" : "symbol"
+            }}</small>
+          </p>
+        </a>
+      </li>
+      }
+    </ul>
+    }
+  </div>
+</div>

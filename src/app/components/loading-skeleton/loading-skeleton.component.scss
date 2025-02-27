@@ -1,0 +1,18 @@
+@import "../../../styles/includes";
+
+.skeleton-product {
+  .skeleton-image {
+    @include skeleton(100%, 100%);
+    aspect-ratio: 1/1;
+    margin-bottom: 1rem;
+  }
+  .skeleton-title {
+    @include skeleton(30px, 90%);
+    margin-bottom: 1rem;
+  }
+
+  .skeleton-price {
+    @include skeleton(15px, 30%);
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="homepage">
+  <div class="inside">
+    <h1>Product Categories</h1>
+    @if (loading) {
+    <ul class="category-list skeleton-list">
+      <app-loading-skeleton></app-loading-skeleton>
+      <app-loading-skeleton></app-loading-skeleton>
+      <app-loading-skeleton></app-loading-skeleton>
+      <app-loading-skeleton></app-loading-skeleton>
+    </ul>
+    } @if (error) {
+    <div class="error">{{ error }}</div>
+    } @if (categories) {
+    <ul class="category-list">
+      @for (category of categories; track category._id) {
+      <li>
+        <a [routerLink]="['/category', category.slug]">
+          <figure>
+            <img
+              [src]="'https://images.takeshape.io/' + category.Image.path"
+              alt="Category"
+            />
+          </figure>
+          <div class="category-info">
+            <p>
+              {{ category.title }}
+              <br />
+              <span
+                >({{ category.products.length }}
+                {{
+                  category.products.length > 1 ? "products" : "product"
+                }})</span
+              >
+            </p>
+          </div>
+        </a>
+      </li>
+      }
+    </ul>
+    }
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="product-view">
+  <div class="inside">
+    <button class="go-back" (click)="goBack()">Back to products</button>
+    <div class="product-single">
+      @if(loadingSingleProduct) {
+      <div class="skeleton-product">
+        <div class="col-1">
+          <div class="skeleton skeleton-image"></div>
+        </div>
+        <div class="col-2">
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-description"></div>
+          <div class="skeleton skeleton-price"></div>
+          <div class="skeleton skeleton-countdown"></div>
+        </div>
+      </div>
+      } @else if (errorSingleProduct) {
+      <p class="error">{{ errorSingleProduct }}</p>
+      } @else if (product) {
+      <div class="col-left">
+        <figure>
+          <img
+            class="product-image"
+            [src]="'https://images.takeshape.io/' + product.image.path"
+            [style.view-transition-name]="'product-image-' + product.slug"
+            [alt]="product.name"
+          />
+        </figure>
+      </div>
+      <div class="col-right">
+        <h1 [innerText]="product.name"></h1>
+        <p>{{ product.description }}</p>
+        <p class="price">
+          {{ product.price.toFixed(2) | currency : "EUR" : "symbol" }}
+        </p>
+        <app-countdown></app-countdown>
+      </div>
+      }
+    </div>
+    <div class="related-products">
+      <h2>Related Products</h2>
+      @if(loadingRelatedProducts) {
+      <div class="skeleton-related-products">
+        <ul class="related-product-list skeleton-list">
+          <app-loading-skeleton></app-loading-skeleton>
+          <app-loading-skeleton></app-loading-skeleton>
+          <app-loading-skeleton></app-loading-skeleton>
+        </ul>
+      </div>
+      } @else if (errorRelatedProducts) {
+      <p class="error">{{ errorRelatedProducts }}</p>
+      } @else if (relatedProducts) { @if (relatedProducts.length === 0) {
+      <p class="no-products">No products found in this category.</p>
+      } @else {
+      <app-related-products
+        [relatedProducts]="relatedProducts"
+        [categorySlug]="categorySlug"
+      ></app-related-products>
+      } }
+    </div>
+  </div>
+</div>

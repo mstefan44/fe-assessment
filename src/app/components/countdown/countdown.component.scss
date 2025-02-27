@@ -1,0 +1,35 @@
+@import "../../../styles/includes";
+
+.countdown {
+  .countdown-text {
+    margin-bottom: 1rem;
+  }
+  .timer {
+    display: flex;
+    gap: 0.5rem;
+    font-family: $orbitron;
+  }
+
+  .timer-unit {
+    background: rgba($primary, 0.5);
+    padding: 8px;
+    border-radius: 3px;
+    min-width: 80px;
+    text-align: center;
+    color: #fff;
+
+    .digit {
+      @include font-text-medium;
+      font-weight: 700;
+      display: block;
+      background-color: $primary;
+      border-radius: 3px;
+      padding: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .label {
+      font-size: 12px;
+    }
+  }
+}

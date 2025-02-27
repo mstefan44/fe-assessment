@@ -1,0 +1,53 @@
+@mixin wrapper {
+  width: 90%;
+  max-width: 1520px;
+  margin-inline: auto;
+}
+
+@mixin button {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 10px;
+  padding: 20px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  // box-shadow: 0 0 20px #eee;
+  border: none;
+  border-radius: 10px;
+  font-family: $orbitron;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #4ca1af 0%,
+    #c4e0e5 51%,
+    #4ca1af 100%
+  );
+
+  &:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+@mixin skeleton($height: 20px, $width: 100%) {
+  background: linear-gradient(
+    90deg,
+    #dadada 25%,
+    lighten(#dadada, 5%) 50%,
+    #dadada 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+  height: $height;
+  width: $width;
+  max-width: 100%;
+  @media (max-width: 767px) {
+    aspect-ratio: 1/1;
+  }
+}

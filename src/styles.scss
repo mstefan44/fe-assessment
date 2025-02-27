@@ -1,0 +1,164 @@
+@import "./styles/includes";
+
+// Roboto Regular
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+// Roboto Bold
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Bold.woff2") format("woff2"),
+    url("./assets/fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+// Orbitron Regular
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/Orbitron-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Orbitron-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+// Orbitron Bold
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/Orbitron-Bold.woff2") format("woff2"),
+    url("./assets/fonts/Orbitron-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  font-family: $roboto;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: $primary;
+  z-index: 1;
+  background-image: linear-gradient(
+    -225deg,
+    rgba(0, 121, 145, 0.4) 0%,
+    rgba(0, 121, 145, 0.2) 20%,
+    rgba(120, 255, 214, 0.1) 20%,
+    rgba(120, 255, 214, 0.1) 80%,
+    rgba(0, 121, 145, 0.2) 80%,
+    rgba(0, 121, 145, 0.4) 100%
+  );
+}
+.inside {
+  @include wrapper;
+}
+h1 {
+  @include font-h1;
+  font-family: $orbitron;
+}
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+p,
+li {
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+small {
+  font-size: 14px;
+  font-family: $roboto;
+}
+.button {
+  .btn-grad {
+    background-image: linear-gradient(
+      to right,
+      #1d2b64 0%,
+      #f8cdda 51%,
+      #1d2b64 100%
+    );
+  }
+  .btn-grad {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+}
+.error {
+  color: red;
+  text-align: center;
+}
+.product-image,
+.related-image {
+  /* Ensure layout containment for transitions */
+  contain: layout;
+}
+
+::view-transition-old(root) {
+  animation: fade-out 0.3s ease-out;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.3s ease-in;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

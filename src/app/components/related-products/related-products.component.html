@@ -1,0 +1,26 @@
+<ul class="related-product-list" *ngIf="relatedProducts">
+  @for (product of relatedProducts; track product._id) {
+  <li>
+    <a
+      [routerLink]="['/product', product.slug]"
+      [queryParams]="{ category: categorySlug }"
+    >
+      <figure>
+        <img
+          class="related-image"
+          [src]="'https://images.takeshape.io/' + product.image.path"
+          [alt]="product.name"
+        />
+      </figure>
+      <div class="product-info">
+        <p>
+          {{ product.name }}<br />
+          <span class="price">{{
+            product.price | currency : "EUR" : "symbol"
+          }}</span>
+        </p>
+      </div>
+    </a>
+  </li>
+  }
+</ul>

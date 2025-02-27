@@ -1,0 +1,121 @@
+@import "../../../styles/includes";
+
+.product-view {
+  padding-block: 3rem;
+  button {
+    @include button;
+  }
+  h1 {
+    font-size: clamp(2rem, #{"-0.5rem + 8vw"}, 4rem);
+  }
+  .price {
+    @include font-text-large;
+    font-weight: 700;
+  }
+  .product-single {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 6rem;
+    figure {
+      aspect-ratio: 15/16;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    img {
+      aspect-ratio: 15/16;
+    }
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .skeleton-product {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    .col-1 {
+      max-width: 100%;
+    }
+    .col-2 {
+      flex: 1;
+      height: fit-content;
+      margin-top: auto;
+    }
+    .skeleton-image {
+      @include skeleton(400px, 400px);
+      aspect-ratio: 15/16;
+    }
+    .skeleton-title {
+      @include skeleton(40px, 60%);
+      margin-bottom: 1rem;
+    }
+    .skeleton-description {
+      @include skeleton(20px, 80%);
+      margin-bottom: 1rem;
+    }
+
+    .skeleton-price {
+      @include skeleton(25px, 15%);
+      margin-bottom: 1rem;
+    }
+
+    .skeleton-countdown {
+      @include skeleton(40px, 25%);
+    }
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+
+  .related-products {
+    h2 {
+      @include font-text-large;
+      font-family: $orbitron;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (min-width: 581px) {
+    .related-product-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .col-left {
+      width: 50%;
+    }
+    .col-right {
+      width: 50%;
+    }
+  }
+  @media (min-width: 1181px) {
+    .col-left {
+      width: 40%;
+    }
+    .col-right {
+      width: 60%;
+    }
+    .related-product-list {
+      grid-template-columns: repeat(3, 1fr);
+      figure,
+      img {
+        aspect-ratio: 14/15;
+      }
+    }
+  }
+  @media (min-width: 1440px) {
+    .related-product-list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
