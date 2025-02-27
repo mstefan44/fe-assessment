@@ -38,10 +38,12 @@ export class ProductViewComponent implements OnInit {
     // Scroll to top after route change
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }, 10);
       }
     });
   }
